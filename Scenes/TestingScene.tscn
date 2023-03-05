@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd48kaus8s06b"]
+
+[ext_resource type="PackedScene" uid="uid://cahk400q7nq8o" path="res://Scenes/GalagaShip.tscn" id="1_tw62k"]
+[ext_resource type="PackedScene" uid="uid://44cpf83fokbj" path="res://Scenes/galaga_missile.tscn" id="2_38pvl"]
+[ext_resource type="PackedScene" uid="uid://bkc3k140wjjjf" path="res://Scenes/CameraFocal.tscn" id="4_2kuvx"]
+[ext_resource type="PackedScene" uid="uid://c6t6rrgq8ayd6" path="res://Scenes/EnemyBee.tscn" id="5_tnxo1"]
+
+[node name="TestingScene" type="Node3D"]
+
+[node name="GalagaShip" parent="." instance=ExtResource("1_tw62k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 180.952)
+missile = ExtResource("2_38pvl")
+
+[node name="CameraFocal" parent="." instance=ExtResource("4_2kuvx")]
+
+[node name="EnemyBee" parent="." instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 0, -277.446)
+
+[node name="EnemyBee2" parent="." instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 0, -277.446)
+
+[node name="EnemyBee3" parent="." instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 0, -277.446)
+
+[node name="EnemyBee4" parent="." instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 50, -277.446)
+
+[node name="EnemyBee5" parent="." instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 50, -277.446)
+
+[node name="EnemyBee6" parent="." instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 50, -277.446)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6t6rrgq8ayd6"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyBee.gd" id="1_3fpj8"]
+[ext_resource type="PackedScene" uid="uid://cwdsmoj60j25i" path="res://Models/GalagaEnemyBee.glb" id="1_hrvam"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fk7lf"]
+size = Vector3(20.3779, 11.4998, 23.6022)
+
+[node name="EnemyBee" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_3fpj8")
+
+[node name="GalagaEnemyBee" parent="." instance=ExtResource("1_hrvam")]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10187, 1.23499)
+shape = SubResource("BoxShape3D_fk7lf")

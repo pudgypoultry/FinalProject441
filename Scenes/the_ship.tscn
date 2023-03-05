@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwnj2iv5we6wt"]
+
+[ext_resource type="PackedScene" uid="uid://cahk400q7nq8o" path="res://Scenes/GalagaShip.tscn" id="1_igwvh"]
+
+[node name="TheShip" type="Node3D"]
+
+[node name="GalagaShip" parent="." instance=ExtResource("1_igwvh")]
