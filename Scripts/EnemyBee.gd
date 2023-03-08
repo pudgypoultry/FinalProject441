@@ -3,8 +3,10 @@ extends CharacterBody3D
 @export var frame1 : Node3D
 @export var frame2 : Node3D
 
-@export var FireParticles: CPUParticles3D
-@export var CloudParticles: CPUParticles3D
+@export var fire_Particles: CPUParticles3D
+@export var cloud_Particles: CPUParticles3D
+
+@export var collider : CollisionShape3D
 
 var animate_time = 50
 var counter : int = 0 
@@ -20,10 +22,11 @@ func _physics_process(delta):
 	animate_bee(am_i_animating)
 
 func Kill_Me():
-	FireParticles.set_emitting(true)
-	CloudParticles.set_emitting(true)
+	fire_Particles.set_emitting(true)
+	cloud_Particles.set_emitting(true)
 	frames[0].hide()
 	frames[1].hide()
+	collider.set_disabled(true)
 	am_i_animating = false
 
 func animate_bee(showing):

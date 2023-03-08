@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/EnemyBee.gd" id="1_3fpj8"]
 [ext_resource type="PackedScene" uid="uid://cwdsmoj60j25i" path="res://Models/GalagaEnemyBee.glb" id="1_hrvam"]
 [ext_resource type="PackedScene" uid="uid://nxo2p50t0414" path="res://Models/GalagaEnemyBee2.glb" id="2_ama0m"]
-[ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Explosion.tres" id="4_t6rky"]
-[ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Clouds.tres" id="5_1t1o7"]
+[ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Clouds.tres" id="5_qt7uk"]
+[ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Explosion.tres" id="5_ym6bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fk7lf"]
 size = Vector3(20.3779, 11.4998, 23.6022)
@@ -19,24 +19,25 @@ particles_anim_loop = false
 [sub_resource type="BoxMesh" id="BoxMesh_w60tu"]
 material = SubResource("StandardMaterial3D_7cuvj")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elcov"]
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.941176, 0.956863, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpuj4"]
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="BoxMesh" id="BoxMesh_mwri5"]
-material = SubResource("StandardMaterial3D_elcov")
+[sub_resource type="BoxMesh" id="BoxMesh_gyd08"]
+material = SubResource("StandardMaterial3D_vpuj4")
+size = Vector3(8, 8, 8)
 
-[node name="EnemyBee" type="CharacterBody3D" node_paths=PackedStringArray("frame1", "frame2", "FireParticles", "CloudParticles")]
+[node name="EnemyBee" type="CharacterBody3D" node_paths=PackedStringArray("frame1", "frame2", "fire_Particles", "cloud_Particles", "collider")]
 motion_mode = 1
 script = ExtResource("1_3fpj8")
 frame1 = NodePath("GalagaEnemyBee")
 frame2 = NodePath("GalagaEnemyBee2")
-FireParticles = NodePath("ExplosionFire")
-CloudParticles = NodePath("ExplosionCloud")
+fire_Particles = NodePath("ExplosionFire")
+cloud_Particles = NodePath("ExplosionCloud")
+collider = NodePath("CollisionShape3d")
 
 [node name="GalagaEnemyBee2" parent="." instance=ExtResource("2_ama0m")]
 
@@ -63,8 +64,8 @@ initial_velocity_max = 68.37
 angular_velocity_min = -300.0
 angular_velocity_max = 300.0
 damping_max = 12.58
-color_ramp = ExtResource("4_t6rky")
-color_initial_ramp = ExtResource("4_t6rky")
+color_ramp = ExtResource("5_ym6bh")
+color_initial_ramp = ExtResource("5_ym6bh")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 anim_speed_max = 12.03
@@ -72,22 +73,15 @@ anim_speed_max = 12.03
 [node name="ExplosionCloud" type="CPUParticles3D" parent="."]
 emitting = false
 amount = 50
-lifetime = 1.25
+lifetime = 4.21
 one_shot = true
-speed_scale = 0.99
-explosiveness = 0.85
-local_coords = true
-mesh = SubResource("BoxMesh_mwri5")
-emission_shape = 2
-emission_sphere_radius = 1.0
-spread = 180.0
+preprocess = 1.28
+speed_scale = 2.64
+explosiveness = 1.0
+randomness = 0.17
+mesh = SubResource("BoxMesh_gyd08")
+spread = 176.25
 gravity = Vector3(0, 0, 0)
-initial_velocity_max = 18.37
-damping_max = 12.58
-scale_amount_min = 4.17
-scale_amount_max = 12.65
-color_ramp = ExtResource("5_1t1o7")
-color_initial_ramp = ExtResource("5_1t1o7")
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-anim_speed_max = 12.03
+initial_velocity_min = 2.76
+initial_velocity_max = 4.65
+color_ramp = ExtResource("5_qt7uk")
