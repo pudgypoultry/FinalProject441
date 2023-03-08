@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var missile_exclude : PackedScene
+@export var missile_exclude : Node3D
 
 var missile_speed = 450
 var lifetime = 90
@@ -21,7 +21,7 @@ func _process(delta):
 		queue_free()
 	
 	var overlaps = get_overlapping_bodies()
-	if len(overlaps) > 0 && !(missile_exclude in overlaps):
+	if len(overlaps) > 0: #&& !(missile_exclude in overlaps):
 		overlaps[0].Kill_Me()
 		queue_free()
 

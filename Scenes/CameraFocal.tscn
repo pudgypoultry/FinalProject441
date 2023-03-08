@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/CameraFocal.gd" id="1_0jl4s"]
 
 [sub_resource type="Environment" id="Environment_saecx"]
-background_mode = 1
+background_mode = 2
+background_energy_multiplier = 1.48
 
 [node name="CameraFocal" type="Node3D"]
 script = ExtResource("1_0jl4s")

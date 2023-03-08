@@ -1,17 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6t6rrgq8ayd6"]
+[gd_scene load_steps=11 format=3 uid="uid://do6lqhnbcql40"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyBee.gd" id="1_3fpj8"]
 [ext_resource type="PackedScene" uid="uid://cwdsmoj60j25i" path="res://Models/GalagaEnemyBee.glb" id="1_hrvam"]
 [ext_resource type="PackedScene" uid="uid://nxo2p50t0414" path="res://Models/GalagaEnemyBee2.glb" id="2_ama0m"]
+[ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Explosion.tres" id="4_t6rky"]
+[ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Clouds.tres" id="5_1t1o7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fk7lf"]
 size = Vector3(20.3779, 11.4998, 23.6022)
 
-[node name="EnemyBee" type="CharacterBody3D" node_paths=PackedStringArray("frame1", "frame2")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cuvj"]
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_w60tu"]
+material = SubResource("StandardMaterial3D_7cuvj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elcov"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.941176, 0.956863, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_mwri5"]
+material = SubResource("StandardMaterial3D_elcov")
+
+[node name="EnemyBee" type="CharacterBody3D" node_paths=PackedStringArray("frame1", "frame2", "FireParticles", "CloudParticles")]
 motion_mode = 1
 script = ExtResource("1_3fpj8")
 frame1 = NodePath("GalagaEnemyBee")
 frame2 = NodePath("GalagaEnemyBee2")
+FireParticles = NodePath("ExplosionFire")
+CloudParticles = NodePath("ExplosionCloud")
 
 [node name="GalagaEnemyBee2" parent="." instance=ExtResource("2_ama0m")]
 
@@ -20,3 +45,49 @@ frame2 = NodePath("GalagaEnemyBee2")
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10187, 1.23499)
 shape = SubResource("BoxShape3D_fk7lf")
+
+[node name="ExplosionFire" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 100
+lifetime = 1.25
+one_shot = true
+speed_scale = 0.99
+explosiveness = 0.85
+local_coords = true
+mesh = SubResource("BoxMesh_w60tu")
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 68.37
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+damping_max = 12.58
+color_ramp = ExtResource("4_t6rky")
+color_initial_ramp = ExtResource("4_t6rky")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+anim_speed_max = 12.03
+
+[node name="ExplosionCloud" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 50
+lifetime = 1.25
+one_shot = true
+speed_scale = 0.99
+explosiveness = 0.85
+local_coords = true
+mesh = SubResource("BoxMesh_mwri5")
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 18.37
+damping_max = 12.58
+scale_amount_min = 4.17
+scale_amount_max = 12.65
+color_ramp = ExtResource("5_1t1o7")
+color_initial_ramp = ExtResource("5_1t1o7")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+anim_speed_max = 12.03

@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cahk400q7nq8o"]
+[gd_scene load_steps=5 format=3 uid="uid://cahk400q7nq8o"]
 
 [ext_resource type="Script" path="res://Scripts/GalagaShip.gd" id="1_o22pg"]
 [ext_resource type="PackedScene" uid="uid://blb22nkogr816" path="res://Models/GalagaShip.glb" id="2_2cuq2"]
+[ext_resource type="PackedScene" uid="uid://44cpf83fokbj" path="res://Scenes/galaga_missile.tscn" id="2_f1imc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iwbpa"]
 size = Vector3(30.391, 10.8022, 15.0992)
 
 [node name="GalagaShip" type="CharacterBody3D"]
 script = ExtResource("1_o22pg")
+missile = ExtResource("2_f1imc")
 
 [node name="GalagaShip" parent="." instance=ExtResource("2_2cuq2")]
 

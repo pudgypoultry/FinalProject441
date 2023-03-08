@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://44cpf83fokbj"]
+[gd_scene load_steps=8 format=3 uid="uid://44cpf83fokbj"]
 
 [ext_resource type="Script" path="res://Scripts/GalagaMissile.gd" id="1_lvvj2"]
-[ext_resource type="PackedScene" uid="uid://cahk400q7nq8o" path="res://Scenes/GalagaShip.tscn" id="2_f6ec3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ejq2"]
 size = Vector3(12.3047, 6.24291, 6.34571)
@@ -101,7 +100,6 @@ shadow_mesh = SubResource("ArrayMesh_bbhuy")
 [node name="GalagaMissile" type="Area3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_lvvj2")
-missile_exclude = ExtResource("2_f6ec3")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07753, 0, 0)
