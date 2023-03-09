@@ -9,6 +9,8 @@ var theShip
 var cam_arcade : Camera3D
 var cam_starfox : Camera3D
 
+var tween_rotation : Tween
+
 const CAM_MODE = {
 	ARCADE = 0,
 	STARFOX = 1
@@ -20,26 +22,38 @@ func _ready():
 	theShip = get_node("../GalagaShip")
 	cam_arcade = get_node("./OrthogonalCamera")
 	cam_starfox = get_node("./FrustrumCamera")
+	#tween.tween_property($Sprite, "position", Vector3(100, 200, 300), 1)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	Camera_Changer()
-	set_global_rotation(currentAngle)
+	#set_global_rotation(currentAngle)
 
 
 func Camera_Changer():
 	if Input.is_action_pressed('GalagaAngleKey'):
 		currentAngle = galagaAngle
+		make_a_da_tween(currentAngle)
 		theShip.Set_Input_Galaga()
 		cam_arcade.make_current()
 	
 	if Input.is_action_pressed('RTypeAngleKey'):
 		currentAngle = rTypeAngle
+		make_a_da_tween(currentAngle)
 		theShip.Set_Input_RType()
 		cam_arcade.make_current()
 	
 	if Input.is_action_pressed('StarFoxAngleKey'):
 		currentAngle = starFoxAngle
-		theShip.Set_Input_StarFox()
 		cam_starfox.make_current()
+		make_a_da_tween(currentAngle)
+		theShip.Set_Input_StarFox()
+
+
+func make_a_da_tween(desired_rot):
+	tween_rotation = create_tween().bind_node(self)
+	tween_rotation.set_trans(Tween.TRANS_SINE)
+	tween_rotation.set_ease(Tween.EASE_IN_OUT)
+	tween_rotation.tween_property(self, "rotation", desired_rot, 0.2)
