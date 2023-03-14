@@ -27,6 +27,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.151, 0, -10.5468)
 [node name="ShootLeftBack" type="Node3D" parent="GalagaShip/GunOrganizer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1511, 0, -10.5465)
 
+[node name="ShootMiddle" type="Node3D" parent="GalagaShip/GunOrganizer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.3482)
+
 [node name="EngineOrganizer" type="Node3D" parent="GalagaShip"]
 
 [node name="RightEngine" type="Node3D" parent="GalagaShip/EngineOrganizer"]
