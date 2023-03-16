@@ -99,19 +99,19 @@ func Set_Input_StarFox():
 func get_fire_input():
 	if Input.is_action_just_pressed("fire_1"):
 		if mode == SHIP_MODE.GALAGA:
-			for i in range(-3, 4, 1):
+			for i in range(-5, 6, 1):
 				var galaga_bullet = missile.instantiate()
 				owner.add_child(galaga_bullet)
 				galaga_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
-				galaga_bullet.send_me_where(0, i/20.0, 0)
+				galaga_bullet.put_me_where(0, i*5, 0)
 				galaga_bullet.set_global_rotation(missile_rotation)
 		
 		if mode == SHIP_MODE.RTYPE:
-			for i in range(-3, 4, 1):
+			for i in range(-5, 6, 1):
 				var rtype_bullet = missile.instantiate()
 				owner.add_child(rtype_bullet)
 				rtype_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
-				rtype_bullet.send_me_where(i/20.0, 0, 0)
+				rtype_bullet.put_me_where(i*5, 0, 0)
 				rtype_bullet.set_global_rotation(missile_rotation)
 		
 		if mode == SHIP_MODE.STARFOX:
@@ -126,7 +126,6 @@ func get_fire_input():
 
 func lose_life():
 	pass
-
 
 
 

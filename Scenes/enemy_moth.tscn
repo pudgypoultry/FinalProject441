@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnclgkymi5xcg"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_moth.gd" id="1_7ydu6"]
+[ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Explosion.tres" id="1_s7crw"]
+[ext_resource type="PackedScene" uid="uid://b2mp23v2vx3fg" path="res://Models/GalagaEnemyMoth.glb" id="2_3idrb"]
+[ext_resource type="PackedScene" uid="uid://c5g0etn8kxoov" path="res://Models/GalagaEnemyMoth2.glb" id="3_sw28p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75mth"]
+size = Vector3(20.3779, 11.4998, 23.6022)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cuvj"]
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_opkfl"]
+material = SubResource("StandardMaterial3D_7cuvj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpuj4"]
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_pvoiv"]
+material = SubResource("StandardMaterial3D_vpuj4")
+size = Vector3(8, 8, 8)
+
+[node name="EnemyMoth" type="CharacterBody3D" node_paths=PackedStringArray("frame1", "frame2", "fire_Particles", "cloud_Particles", "collider")]
+script = ExtResource("1_7ydu6")
+frame1 = NodePath("GalagaEnemyMoth")
+frame2 = NodePath("GalagaEnemyMoth2")
+fire_Particles = NodePath("ExplosionFire")
+cloud_Particles = NodePath("ExplosionCloud")
+collider = NodePath("CollisionShape3d")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10187, 1.23499)
+shape = SubResource("BoxShape3D_75mth")
+
+[node name="ExplosionFire" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 100
+lifetime = 1.25
+one_shot = true
+speed_scale = 0.99
+explosiveness = 0.85
+local_coords = true
+mesh = SubResource("BoxMesh_opkfl")
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 68.37
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+damping_max = 12.58
+color_ramp = ExtResource("1_s7crw")
+color_initial_ramp = ExtResource("1_s7crw")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+anim_speed_max = 12.03
+
+[node name="ExplosionCloud" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 50
+lifetime = 4.21
+one_shot = true
+preprocess = 1.28
+speed_scale = 2.64
+explosiveness = 1.0
+randomness = 0.17
+mesh = SubResource("BoxMesh_pvoiv")
+spread = 176.25
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.76
+initial_velocity_max = 4.65
+color_ramp = ExtResource("1_s7crw")
+
+[node name="GalagaEnemyMoth" parent="." instance=ExtResource("2_3idrb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="GalagaEnemyMoth2" parent="." instance=ExtResource("3_sw28p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0, 0)

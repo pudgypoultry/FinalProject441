@@ -8,7 +8,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_fk7lf"]
 size = Vector3(20.3779, 11.4998, 23.6022)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cuvj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3k3a"]
 vertex_color_use_as_albedo = true
 billboard_mode = 3
 particles_anim_h_frames = 1
@@ -16,9 +16,9 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_w60tu"]
-material = SubResource("StandardMaterial3D_7cuvj")
+material = SubResource("StandardMaterial3D_r3k3a")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpuj4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ujc5"]
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -26,7 +26,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_gyd08"]
-material = SubResource("StandardMaterial3D_vpuj4")
+material = SubResource("StandardMaterial3D_0ujc5")
 size = Vector3(8, 8, 8)
 
 [node name="EnemyBee" type="CharacterBody3D" node_paths=PackedStringArray("frame1", "frame2", "fire_Particles", "cloud_Particles", "collider")]

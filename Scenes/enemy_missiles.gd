@@ -4,9 +4,10 @@ extends Area3D
 
 var missile_speed = 450
 var lifetime = 90
-var direction = Vector3(0,0,-1)
+var direction = Vector3(0,0,1)
 var my_scale = Vector3(1,1,1)
 var my_position = Vector3(0,0,0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,3 +36,4 @@ func set_my_scale(x, y, z):
 
 func put_me_where(x_offset, y_offset, z_offset):
 	position += Vector3(x_offset, y_offset, z_offset)
+
