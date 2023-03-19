@@ -20,12 +20,13 @@ func _process(delta):
 	position += direction * missile_speed * delta
 	lifetime -= 1
 	
-	if lifetime < 0:
-		queue_free()
+	#if lifetime < 0:
+	#	queue_free()
 	
 	var overlaps = get_overlapping_bodies()
 	if len(overlaps) > 0: #&& !(missile_exclude in overlaps):
 		overlaps[0].Kill_Me()
+		await get_tree().create_timer(0.2, false).timeout
 		queue_free()
 
 func send_me_where(x_speed, y_speed, z_speed):

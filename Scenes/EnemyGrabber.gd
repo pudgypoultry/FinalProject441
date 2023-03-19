@@ -17,6 +17,10 @@ var am_i_animating = true
 
 var player_position = Vector3(0,0,0)
 
+var my_x = 0
+var my_y = 0
+var my_z = 0
+
 func _ready():
 	frames = [frame1, frame2]
 
@@ -30,7 +34,8 @@ func Kill_Me():
 	frames[1].hide()
 	collider.set_disabled(true)
 	am_i_animating = false
-	get_player_position()
+	await get_tree().create_timer(1.0, false).timeout
+	queue_free()
 
 func animate_bee(showing):
 	if showing:
@@ -50,3 +55,11 @@ func charge():
 func get_player_position():
 	player_position = get_node("/root/TestingScene/GalagaShip").get_position()
 	print_debug(player_position)
+
+func set_enemy_grid_position(x, y, z):
+	my_x = x
+	my_y = y
+	my_z = z
+
+func get_enemy_grid_position():
+	return Vector3(my_x, my_y, my_z)

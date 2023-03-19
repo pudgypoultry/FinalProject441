@@ -34,8 +34,7 @@ func Kill_Me():
 	frames[1].hide()
 	collider.set_disabled(true)
 	am_i_animating = false
-	await get_tree().create_timer(1.0, false).timeout
-	queue_free()
+	get_player_position()
 
 func animate_bee(showing):
 	if showing:

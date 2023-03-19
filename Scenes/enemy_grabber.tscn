@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjc26xbgcgucj"]
+
+[ext_resource type="Script" path="res://Scenes/EnemyGrabber.gd" id="1_mgqus"]
+
+[node name="EnemyGrabber" type="CharacterBody3D"]
+script = ExtResource("1_mgqus")

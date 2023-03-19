@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd48kaus8s06b"]
+[gd_scene load_steps=8 format=3 uid="uid://cd48kaus8s06b"]
 
 [ext_resource type="PackedScene" uid="uid://cahk400q7nq8o" path="res://Scenes/GalagaShip.tscn" id="1_tw62k"]
 [ext_resource type="PackedScene" uid="uid://bkc3k140wjjjf" path="res://Scenes/CameraFocal.tscn" id="4_2kuvx"]
-[ext_resource type="PackedScene" uid="uid://cnclgkymi5xcg" path="res://Scenes/enemy_moth.tscn" id="4_4jjiy"]
+[ext_resource type="PackedScene" uid="uid://lx46vmkged8e" path="res://Scenes/enemy_moth.tscn" id="4_4jjiy"]
+[ext_resource type="Script" path="res://Scenes/EnemyManager.gd" id="5_puvph"]
 [ext_resource type="PackedScene" uid="uid://do6lqhnbcql40" path="res://Scenes/EnemyBee.tscn" id="5_tnxo1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eiun8"]
@@ -15,6 +16,8 @@ colors = PackedColorArray(1, 0.996078, 0, 1, 1, 1, 1, 1)
 
 [node name="GalagaShip" parent="." instance=ExtResource("1_tw62k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.232, 180.952)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CameraFocal" parent="." instance=ExtResource("4_2kuvx")]
 
@@ -63,3 +66,9 @@ hue_variation_max = 0.75
 
 [node name="EnemyMoth" parent="." instance=ExtResource("4_4jjiy")]
 transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 0, -236.07)
+
+[node name="EnemyMoth2" parent="." instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 0, -236.07)
+
+[node name="EnemyManager" type="Node3D" parent="."]
+script = ExtResource("5_puvph")
