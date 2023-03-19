@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd48kaus8s06b"]
+[gd_scene load_steps=9 format=3 uid="uid://cd48kaus8s06b"]
 
 [ext_resource type="PackedScene" uid="uid://cahk400q7nq8o" path="res://Scenes/GalagaShip.tscn" id="1_tw62k"]
 [ext_resource type="PackedScene" uid="uid://bkc3k140wjjjf" path="res://Scenes/CameraFocal.tscn" id="4_2kuvx"]
 [ext_resource type="PackedScene" uid="uid://lx46vmkged8e" path="res://Scenes/enemy_moth.tscn" id="4_4jjiy"]
 [ext_resource type="Script" path="res://Scenes/EnemyManager.gd" id="5_puvph"]
 [ext_resource type="PackedScene" uid="uid://do6lqhnbcql40" path="res://Scenes/EnemyBee.tscn" id="5_tnxo1"]
+[ext_resource type="PackedScene" uid="uid://bjc26xbgcgucj" path="res://Scenes/enemy_grabber.tscn" id="6_7n3eg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eiun8"]
 
@@ -72,3 +73,6 @@ transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0
 
 [node name="EnemyManager" type="Node3D" parent="."]
 script = ExtResource("5_puvph")
+
+[node name="EnemyGrabber" parent="." instance=ExtResource("6_7n3eg")]
+transform = Transform3D(-1.20591e-07, 0, -2.7588, 0, 2.7588, 0, 2.7588, 0, -1.20591e-07, 0, 28.2628, -370.158)

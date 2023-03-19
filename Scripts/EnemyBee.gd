@@ -30,10 +30,10 @@ func _physics_process(delta):
 func Kill_Me():
 	fire_Particles.set_emitting(true)
 	cloud_Particles.set_emitting(true)
+	am_i_animating = false
 	frames[0].hide()
 	frames[1].hide()
 	collider.set_disabled(true)
-	am_i_animating = false
 	await get_tree().create_timer(1.0, false).timeout
 	queue_free()
 

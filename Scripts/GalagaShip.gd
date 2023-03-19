@@ -127,7 +127,8 @@ func get_fire_input():
 func lose_life():
 	pass
 
-
+func get_ship_mode():
+	return mode
 
 
 
