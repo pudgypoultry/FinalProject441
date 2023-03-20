@@ -27,11 +27,13 @@ var my_z = 0
 func _ready():
 	frames = [frame1, frame2]
 	collider1.set_disabled(false)
+	charge()
+
 
 func _physics_process(delta):
 	animate_grabber(am_i_animating)
 	
-	if position.z > 230:
+	if position.z > 270:
 		pass
 		grabbing = false
 		position = original_position

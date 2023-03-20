@@ -22,24 +22,6 @@ collision_mask = 3
 
 [node name="CameraFocal" parent="." instance=ExtResource("4_2kuvx")]
 
-[node name="EnemyBee" parent="." instance=ExtResource("5_tnxo1")]
-transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 0, -277.446)
-
-[node name="EnemyBee2" parent="." instance=ExtResource("5_tnxo1")]
-transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 0, -277.446)
-
-[node name="EnemyBee3" parent="." instance=ExtResource("5_tnxo1")]
-transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 0, -277.446)
-
-[node name="EnemyBee4" parent="." instance=ExtResource("5_tnxo1")]
-transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 50, -277.446)
-
-[node name="EnemyBee5" parent="." instance=ExtResource("5_tnxo1")]
-transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 50, -277.446)
-
-[node name="EnemyBee6" parent="." instance=ExtResource("5_tnxo1")]
-transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 50, -277.446)
-
 [node name="BackgroundStars" type="CPUParticles3D" parent="."]
 transform = Transform3D(2.52321, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -555.878)
 visible = false
@@ -65,14 +47,180 @@ color_ramp = SubResource("Gradient_f2bc0")
 hue_variation_min = -0.86
 hue_variation_max = 0.75
 
-[node name="EnemyMoth" parent="." instance=ExtResource("4_4jjiy")]
-transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 0, -236.07)
-
-[node name="EnemyMoth2" parent="." instance=ExtResource("4_4jjiy")]
-transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 0, -236.07)
-
 [node name="EnemyManager" type="Node3D" parent="."]
 script = ExtResource("5_puvph")
 
 [node name="EnemyGrabber" parent="." instance=ExtResource("6_7n3eg")]
-transform = Transform3D(-1.20591e-07, 0, -2.7588, 0, 2.7588, 0, 2.7588, 0, -1.20591e-07, 0, 28.2628, -370.158)
+transform = Transform3D(-1.03428e-07, 0, -2.36615, 0, 2.36615, 0, 2.36615, 0, -1.03428e-07, 0, 53.583, -370.158)
+
+[node name="BeeManager" type="Node3D" parent="."]
+
+[node name="EnemyBee" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 2.0006, -277.446)
+
+[node name="EnemyBee2" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 2.0006, -277.446)
+
+[node name="EnemyBee3" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 2.0006, -277.446)
+
+[node name="EnemyBee4" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 52.0006, -277.446)
+
+[node name="EnemyBee5" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 52.0006, -277.446)
+
+[node name="EnemyBee6" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 52.0006, -277.446)
+
+[node name="EnemyBee7" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 101.245, -277.446)
+
+[node name="EnemyBee8" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 101.245, -277.446)
+
+[node name="EnemyBee9" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 101.245, -277.446)
+
+[node name="EnemyBee10" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 151.245, -277.446)
+
+[node name="EnemyBee11" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 151.245, -277.446)
+
+[node name="EnemyBee12" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 151.245, -277.446)
+
+[node name="EnemyBee13" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 2.0006, -195.591)
+
+[node name="EnemyBee14" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 2.0006, -195.591)
+
+[node name="EnemyBee15" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 2.0006, -195.591)
+
+[node name="EnemyBee16" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 52.0006, -195.591)
+
+[node name="EnemyBee17" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 52.0006, -195.591)
+
+[node name="EnemyBee18" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 52.0006, -195.591)
+
+[node name="EnemyBee19" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 101.245, -195.591)
+
+[node name="EnemyBee20" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 101.245, -195.591)
+
+[node name="EnemyBee21" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 101.245, -195.591)
+
+[node name="EnemyBee22" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 151.245, -195.591)
+
+[node name="EnemyBee23" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, -50, 151.245, -195.591)
+
+[node name="EnemyBee24" parent="BeeManager" instance=ExtResource("5_tnxo1")]
+transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 50, 151.245, -195.591)
+
+[node name="MothManager" type="Node3D" parent="."]
+
+[node name="EnemyMoth" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 0, -236.07)
+
+[node name="EnemyMoth2" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 0, -236.07)
+
+[node name="EnemyMoth3" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 58.7675, -236.07)
+
+[node name="EnemyMoth4" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 58.7675, -236.07)
+
+[node name="EnemyMoth5" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 109.209, -236.07)
+
+[node name="EnemyMoth6" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 109.209, -236.07)
+
+[node name="EnemyMoth7" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 167.976, -236.07)
+
+[node name="EnemyMoth8" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 167.976, -236.07)
+
+[node name="EnemyMoth9" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 0, -236.07)
+
+[node name="EnemyMoth10" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 58.7675, -236.07)
+
+[node name="EnemyMoth11" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 109.209, -236.07)
+
+[node name="EnemyMoth12" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 167.976, -236.07)
+
+[node name="EnemyMoth13" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 0, -236.07)
+
+[node name="EnemyMoth14" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 58.7675, -236.07)
+
+[node name="EnemyMoth15" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 109.209, -236.07)
+
+[node name="EnemyMoth16" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 167.976, -236.07)
+
+[node name="EnemyMoth17" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 0, -151.087)
+
+[node name="EnemyMoth18" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 0, -151.087)
+
+[node name="EnemyMoth19" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 58.7675, -151.087)
+
+[node name="EnemyMoth20" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 58.7675, -151.087)
+
+[node name="EnemyMoth21" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 109.209, -151.087)
+
+[node name="EnemyMoth22" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 109.209, -151.087)
+
+[node name="EnemyMoth23" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 118.08, 167.976, -151.087)
+
+[node name="EnemyMoth24" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -118.08, 167.976, -151.087)
+
+[node name="EnemyMoth25" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 0, -151.087)
+
+[node name="EnemyMoth26" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 58.7675, -151.087)
+
+[node name="EnemyMoth27" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 109.209, -151.087)
+
+[node name="EnemyMoth28" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, 171.779, 167.976, -151.087)
+
+[node name="EnemyMoth29" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 0, -151.087)
+
+[node name="EnemyMoth30" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 58.7675, -151.087)
+
+[node name="EnemyMoth31" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 109.209, -151.087)
+
+[node name="EnemyMoth32" parent="MothManager" instance=ExtResource("4_4jjiy")]
+transform = Transform3D(-1.48362, 0, -1.29702e-07, 0, 1.48362, 0, 1.29702e-07, 0, -1.48362, -170.567, 167.976, -151.087)

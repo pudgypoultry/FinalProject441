@@ -14,18 +14,26 @@ var current_frame : int = 0
 var number_of_frames : int = 2
 var frames = []
 var am_i_animating = true
+var charging = false
 
 var player_position = Vector3(0,0,0)
+var original_position = Vector3(0,0,0)
 
-var my_x = 0
-var my_y = 0
-var my_z = 0
+@export var my_x = 0
+@export var my_y = 0
+@export var my_z = 0
 
 func _ready():
 	frames = [frame1, frame2]
+	original_position = position
+	#charge()
 
 func _physics_process(delta):
 	animate_bee(am_i_animating)
+	get_player_position()
+	if position.z > 230:
+		position = original_position
+		charging = false
 
 func Kill_Me():
 	fire_Particles.set_emitting(true)
@@ -34,7 +42,8 @@ func Kill_Me():
 	frames[0].hide()
 	frames[1].hide()
 	collider.set_disabled(true)
-	get_player_position()
+	await get_tree().create_timer(1.0, false).timeout
+	queue_free()
 
 func animate_bee(showing):
 	if showing:
@@ -44,16 +53,18 @@ func animate_bee(showing):
 		#print_debug(current_frame)
 		frames[current_frame].show()
 		frames[(current_frame - 1) % number_of_frames].hide()
+	
+	if charging:
+		position += Vector3(0, player_position.y - position.y, 2.5)
 
 func shoot():
 	pass
 
 func charge():
-	pass
+	charging = true
 
 func get_player_position():
 	player_position = get_node("/root/TestingScene/GalagaShip").get_position()
-	print_debug(player_position)
 
 func set_enemy_grid_position(x, y, z):
 	my_x = x
