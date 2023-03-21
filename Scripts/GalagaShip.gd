@@ -10,6 +10,9 @@ var missile_rotation = Vector3(0, PI/2, 0)
 var x_movement_range = 175
 var y_movement_range = 175
 
+var can_shoot = true
+
+
 const SHIP_MODE = {
 	GALAGA = 0, 
 	RTYPE = 1, 
@@ -97,32 +100,43 @@ func Set_Input_StarFox():
 	mode = SHIP_MODE.STARFOX
 
 func get_fire_input():
-	if Input.is_action_just_pressed("fire_1"):
-		if mode == SHIP_MODE.GALAGA:
-			for i in range(-5, 6, 1):
-				var galaga_bullet = missile.instantiate()
-				owner.add_child(galaga_bullet)
-				galaga_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
-				galaga_bullet.put_me_where(0, i*5, 0)
-				galaga_bullet.set_global_rotation(missile_rotation)
-		
-		if mode == SHIP_MODE.RTYPE:
-			for i in range(-5, 6, 1):
-				var rtype_bullet = missile.instantiate()
-				owner.add_child(rtype_bullet)
-				rtype_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
-				rtype_bullet.put_me_where(i*5, 0, 0)
-				rtype_bullet.set_global_rotation(missile_rotation)
-		
-		if mode == SHIP_MODE.STARFOX:
-			var current_bullet_right = missile.instantiate()
-			var current_bullet_left = missile.instantiate()
-			owner.add_child(current_bullet_right)
-			owner.add_child(current_bullet_left)
-			current_bullet_right.transform = get_node("./GalagaShip/GunOrganizer/ShootRightFront").global_transform
-			current_bullet_right.set_global_rotation(missile_rotation)
-			current_bullet_left.transform = get_node("./GalagaShip/GunOrganizer/ShootLeftFront").global_transform
-			current_bullet_left.set_global_rotation(missile_rotation)
+	if can_shoot:
+		if Input.is_action_just_pressed("fire_1"):
+			if mode == SHIP_MODE.GALAGA:
+				for i in range(-5, 6, 1):
+					var galaga_bullet = missile.instantiate()
+					owner.add_child(galaga_bullet)
+					galaga_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
+					galaga_bullet.put_me_where(0, i*5, 0)
+					galaga_bullet.set_global_rotation(missile_rotation)
+				can_shoot = false
+				await get_tree().create_timer(0.75, false).timeout
+				can_shoot = true
+			
+			if mode == SHIP_MODE.RTYPE:
+				for i in range(-5, 6, 1):
+					var rtype_bullet = missile.instantiate()
+					owner.add_child(rtype_bullet)
+					rtype_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
+					rtype_bullet.put_me_where(i*5, 0, 0)
+					rtype_bullet.set_global_rotation(missile_rotation)
+				can_shoot = false
+				await get_tree().create_timer(0.75, false).timeout
+				can_shoot = true
+				
+			if mode == SHIP_MODE.STARFOX:
+				var current_bullet_right = missile.instantiate()
+				var current_bullet_left = missile.instantiate()
+				owner.add_child(current_bullet_right)
+				owner.add_child(current_bullet_left)
+				current_bullet_right.transform = get_node("./GalagaShip/GunOrganizer/ShootRightFront").global_transform
+				current_bullet_right.set_global_rotation(missile_rotation)
+				current_bullet_left.transform = get_node("./GalagaShip/GunOrganizer/ShootLeftFront").global_transform
+				current_bullet_left.set_global_rotation(missile_rotation)
+				can_shoot = false
+				await get_tree().create_timer(0.15, false).timeout
+				can_shoot = true
+
 
 func lose_life():
 	pass

@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://pk3pnd04f774"]
+
+[ext_resource type="PackedScene" uid="uid://qmm8tce5l16d" path="res://Models/Grabber3.glb" id="1_t85jh"]
+[ext_resource type="Shader" path="res://Shaders/grabber_3outline.gdshader" id="2_fs58d"]
+[ext_resource type="Shader" path="res://Shaders/Grabber3.gdshader" id="2_kun6o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdagj"]
+render_priority = 0
+shader = ExtResource("2_fs58d")
+shader_parameter/enable = true
+shader_parameter/outline_thickness = 0.05
+shader_parameter/color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uv80f"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_cdagj")
+shader = ExtResource("2_kun6o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12l1j"]
+render_priority = 0
+shader = ExtResource("2_fs58d")
+shader_parameter/enable = true
+shader_parameter/outline_thickness = 0.05
+shader_parameter/color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ustpk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_12l1j")
+shader = ExtResource("2_kun6o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v3al"]
+render_priority = 0
+shader = ExtResource("2_fs58d")
+shader_parameter/enable = true
+shader_parameter/outline_thickness = 0.05
+shader_parameter/color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xu1l2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6v3al")
+shader = ExtResource("2_kun6o")
+
+[node name="Grabber3" instance=ExtResource("1_t85jh")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_uv80f")
+surface_material_override/1 = SubResource("ShaderMaterial_ustpk")
+surface_material_override/2 = SubResource("ShaderMaterial_xu1l2")
