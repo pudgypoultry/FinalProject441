@@ -24,8 +24,12 @@ var my_x = 0
 var my_y = 0
 var my_z = 0
 
+var dying = false
+
 func _ready():
 	frames = [frame1, frame2]
+	await get_tree().create_timer(6.0, false).timeout
+	charge()
 
 
 func _physics_process(delta):
@@ -35,13 +39,19 @@ func _physics_process(delta):
 		pass
 		grabbing = false
 		position = original_position
+	
+	if get_node("/root/TestingScene/MothManager").get_children().size() == 0 && get_node("/root/TestingScene/BeeManager").get_children().size() == 0:
+		charge()
 
 func Kill_Me():
-	fire_Particles.set_emitting(true)
-	get_node("./Grabber3").show()
-	game_end = true
-	frames[0].hide()
-	frames[1].hide()
+	if !dying:
+		fire_Particles.set_emitting(true)
+		get_node("./Grabber3").show()
+		game_end = true
+		frames[0].hide()
+		frames[1].hide()
+		grabbing = false
+		dying = true
 
 func animate_grabber(showing, finale):
 	if !finale:

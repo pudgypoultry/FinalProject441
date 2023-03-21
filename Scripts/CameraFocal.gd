@@ -5,6 +5,7 @@ var rTypeAngle   : Vector3 = Vector3(PI/2, 0, -PI/2)
 var starFoxAngle : Vector3 = Vector3(PI/2, 0, 0)
 var currentAngle : Vector3
 var theShip
+var desired_position
 
 var cam_arcade : Camera3D
 var cam_starfox : Camera3D
@@ -57,3 +58,15 @@ func make_a_da_tween(desired_rot):
 	tween_rotation.set_trans(Tween.TRANS_SINE)
 	tween_rotation.set_ease(Tween.EASE_IN_OUT)
 	tween_rotation.tween_property(self, "rotation", desired_rot, 0.2)
+
+func DO_IT():
+	desired_position = get_node("../EnemyGrabber").position
+	var tween_position = create_tween().bind_node(self)
+	tween_position.set_trans(Tween.TRANS_SINE)
+	tween_position.set_ease(Tween.EASE_IN_OUT)
+	tween_position.tween_property(self, "position", desired_position + Vector3(0,0,-90), 4)
+	make_a_da_tween(Vector3(PI + 0.5, -PI + 0.5, -PI - 0.5))
+	var last_tween = create_tween().bind_node(self)
+	last_tween.set_trans(Tween.TRANS_SINE)
+	last_tween.set_ease(Tween.EASE_IN_OUT)
+	last_tween.tween_property(self, "rotation", -Vector3(PI + 0.5, -PI + 0.5, -PI - 0.5), 30)

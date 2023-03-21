@@ -11,7 +11,8 @@ var x_movement_range = 175
 var y_movement_range = 175
 
 var can_shoot = true
-
+var tween_position : Tween
+var original_position
 
 const SHIP_MODE = {
 	GALAGA = 0, 
@@ -22,7 +23,9 @@ const SHIP_MODE = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	original_position = position
+	await get_tree().create_timer(10, false).timeout
+	HOLDO_MANEUVER()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -100,42 +103,46 @@ func Set_Input_StarFox():
 	mode = SHIP_MODE.STARFOX
 
 func get_fire_input():
-	if can_shoot:
-		if Input.is_action_just_pressed("fire_1"):
-			if mode == SHIP_MODE.GALAGA:
-				for i in range(-5, 6, 1):
-					var galaga_bullet = missile.instantiate()
-					owner.add_child(galaga_bullet)
-					galaga_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
-					galaga_bullet.put_me_where(0, i*5, 0)
-					galaga_bullet.set_global_rotation(missile_rotation)
-				can_shoot = false
-				await get_tree().create_timer(0.75, false).timeout
-				can_shoot = true
-			
-			if mode == SHIP_MODE.RTYPE:
-				for i in range(-5, 6, 1):
-					var rtype_bullet = missile.instantiate()
-					owner.add_child(rtype_bullet)
-					rtype_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
-					rtype_bullet.put_me_where(i*5, 0, 0)
-					rtype_bullet.set_global_rotation(missile_rotation)
-				can_shoot = false
-				await get_tree().create_timer(0.75, false).timeout
-				can_shoot = true
+	if get_node("/root/TestingScene/MothManager").get_children().size() != 0 || get_node("/root/TestingScene/BeeManager").get_children().size() != 0:
+		if can_shoot:
+			if Input.is_action_just_pressed("fire_1"):
+				if mode == SHIP_MODE.GALAGA:
+					for i in range(-5, 6, 1):
+						var galaga_bullet = missile.instantiate()
+						owner.add_child(galaga_bullet)
+						galaga_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
+						galaga_bullet.put_me_where(0, i*5, 0)
+						galaga_bullet.set_global_rotation(missile_rotation)
+					can_shoot = false
+					await get_tree().create_timer(0.75, false).timeout
+					can_shoot = true
 				
-			if mode == SHIP_MODE.STARFOX:
-				var current_bullet_right = missile.instantiate()
-				var current_bullet_left = missile.instantiate()
-				owner.add_child(current_bullet_right)
-				owner.add_child(current_bullet_left)
-				current_bullet_right.transform = get_node("./GalagaShip/GunOrganizer/ShootRightFront").global_transform
-				current_bullet_right.set_global_rotation(missile_rotation)
-				current_bullet_left.transform = get_node("./GalagaShip/GunOrganizer/ShootLeftFront").global_transform
-				current_bullet_left.set_global_rotation(missile_rotation)
-				can_shoot = false
-				await get_tree().create_timer(0.15, false).timeout
-				can_shoot = true
+				if mode == SHIP_MODE.RTYPE:
+					for i in range(-5, 6, 1):
+						var rtype_bullet = missile.instantiate()
+						owner.add_child(rtype_bullet)
+						rtype_bullet.transform = get_node("./GalagaShip/GunOrganizer/ShootMiddle").global_transform
+						rtype_bullet.put_me_where(i*5, 0, 0)
+						rtype_bullet.set_global_rotation(missile_rotation)
+					can_shoot = false
+					await get_tree().create_timer(0.75, false).timeout
+					can_shoot = true
+					
+				if mode == SHIP_MODE.STARFOX:
+					var current_bullet_right = missile.instantiate()
+					var current_bullet_left = missile.instantiate()
+					owner.add_child(current_bullet_right)
+					owner.add_child(current_bullet_left)
+					current_bullet_right.transform = get_node("./GalagaShip/GunOrganizer/ShootRightFront").global_transform
+					current_bullet_right.set_global_rotation(missile_rotation)
+					current_bullet_left.transform = get_node("./GalagaShip/GunOrganizer/ShootLeftFront").global_transform
+					current_bullet_left.set_global_rotation(missile_rotation)
+					can_shoot = false
+					await get_tree().create_timer(0.15, false).timeout
+					can_shoot = true
+	else:
+		if Input.is_action_just_pressed("fire_1"):
+			HOLDO_MANEUVER()
 
 
 func lose_life():
@@ -144,7 +151,19 @@ func lose_life():
 func get_ship_mode():
 	return mode
 
+func HOLDO_MANEUVER():
+	print_debug("ZOOM")
+	make_a_da_tween(original_position)
+	get_node("/root/TestingScene/BackgroundStars").do_it()
+	make_a_da_tween(position + Vector3(0,0, 50))
+	await get_tree().create_timer(4, false).timeout
+	make_a_da_tween(position + Vector3(0,0,-300000))
+	get_node("/root/TestingScene/BackgroundStars").hide()
+	get_node("/root/TestingScene/CameraFocal").DO_IT()
+	get_node("/root/TestingScene/EnemyGrabber").Kill_Me()
 
-
-
-
+func make_a_da_tween(desired_pos):
+	tween_position = create_tween().bind_node(self)
+	tween_position.set_trans(Tween.TRANS_SINE)
+	tween_position.set_ease(Tween.EASE_IN_OUT)
+	tween_position.tween_property(self, "position", desired_pos, 4)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx1f23o15nfof"]
+[gd_scene load_steps=11 format=3 uid="uid://bx1f23o15nfof"]
 
 [ext_resource type="PackedScene" uid="uid://cahk400q7nq8o" path="res://Scenes/GalagaShip.tscn" id="1_tw62k"]
+[ext_resource type="Script" path="res://Scripts/BackgroundStars.gd" id="3_3fxb4"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="3_v3tji"]
 [ext_resource type="PackedScene" uid="uid://bkc3k140wjjjf" path="res://Scenes/CameraFocal.tscn" id="4_2kuvx"]
 [ext_resource type="PackedScene" uid="uid://lx46vmkged8e" path="res://Scenes/enemy_moth.tscn" id="4_4jjiy"]
@@ -46,6 +47,7 @@ color = Color(0.980392, 1, 0, 1)
 color_ramp = SubResource("Gradient_f2bc0")
 hue_variation_min = -0.86
 hue_variation_max = 0.75
+script = ExtResource("3_3fxb4")
 
 [node name="EnemyManager" type="Node3D" parent="."]
 script = ExtResource("3_v3tji")
@@ -54,6 +56,7 @@ script = ExtResource("3_v3tji")
 transform = Transform3D(-1.03428e-07, 0, -2.36615, 0, 2.36615, 0, 2.36615, 0, -1.03428e-07, 0, 55.3844, -370.158)
 
 [node name="BeeManager" type="Node3D" parent="."]
+visible = false
 
 [node name="EnemyBee" parent="BeeManager" instance=ExtResource("5_tnxo1")]
 transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 2.0006, -277.446)
@@ -174,6 +177,7 @@ my_y = 3
 my_z = 1
 
 [node name="MothManager" type="Node3D" parent="."]
+visible = false
 script = ExtResource("6_5g0fn")
 
 [node name="EnemyMoth" parent="MothManager" instance=ExtResource("4_4jjiy")]
