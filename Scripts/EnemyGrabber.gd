@@ -58,13 +58,13 @@ func animate_grabber(showing, finale):
 		if showing:
 			if grabbing:
 				frames[1].show()
-				collider2.set_disabled(false)
+				#collider2.set_disabled(false)
 				frames[0].hide()
 				set_rotation(Vector3(0.020,0,0) + rotation)
 				position += Vector3(0,0,0.75)
 			else:
 				frames[0].show()
-				collider2.set_disabled(true)
+				#collider2.set_disabled(true)
 				frames[1].hide()
 				rotation = Vector3(0, -PI/2, 0)
 

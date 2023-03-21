@@ -13,6 +13,7 @@ var y_movement_range = 175
 var can_shoot = true
 var tween_position : Tween
 var original_position
+var GOOD_TO_GO = true
 
 const SHIP_MODE = {
 	GALAGA = 0, 
@@ -141,7 +142,9 @@ func get_fire_input():
 					can_shoot = true
 	else:
 		if Input.is_action_just_pressed("fire_1"):
-			HOLDO_MANEUVER()
+			if GOOD_TO_GO:
+				HOLDO_MANEUVER()
+				GOOD_TO_GO = false
 
 
 func lose_life():
