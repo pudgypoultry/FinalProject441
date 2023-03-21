@@ -36,6 +36,8 @@ func _physics_process(delta):
 		charging = false
 
 func Kill_Me():
+	charging = false
+	get_node("./Kaboom").playing = true
 	fire_Particles.set_emitting(true)
 	cloud_Particles.set_emitting(true)
 	am_i_animating = false

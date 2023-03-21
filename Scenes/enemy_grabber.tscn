@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4lc16o4yo3wa"]
+[gd_scene load_steps=15 format=3 uid="uid://d4lc16o4yo3wa"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyGrabber.gd" id="1_ni1wq"]
 [ext_resource type="PackedScene" uid="uid://cl5cv13yjqli2" path="res://Models/Grabber.glb" id="2_ojsp3"]
@@ -17,15 +17,9 @@ size = Vector3(16.184, 35.1199, 117.972)
 render_priority = 0
 shader = ExtResource("6_4oglu")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3k3a"]
-vertex_color_use_as_albedo = true
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="BoxMesh" id="BoxMesh_3hv5c"]
-material = SubResource("StandardMaterial3D_r3k3a")
+[sub_resource type="SphereMesh" id="SphereMesh_k1jes"]
+radius = 0.25
+height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ujc5"]
 billboard_mode = 3
@@ -38,6 +32,13 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_0ujc5")
 size = Vector3(8, 8, 8)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otnum"]
+render_priority = 0
+shader = ExtResource("6_4oglu")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rc5eo"]
+material = SubResource("ShaderMaterial_otnum")
+
 [node name="EnemyGrabber" type="CharacterBody3D" node_paths=PackedStringArray("frame1", "frame2", "collider1", "collider2", "fire_Particles", "cloud_Particles")]
 script = ExtResource("1_ni1wq")
 frame1 = NodePath("Grabber")
@@ -45,7 +46,7 @@ frame2 = NodePath("Grabber2")
 collider1 = NodePath("CollisionShape3D")
 collider2 = NodePath("CollisionShape3D2")
 fire_Particles = NodePath("ExplosionLights")
-cloud_Particles = NodePath("ExplosionCloud")
+cloud_Particles = NodePath("ExplosionLights2")
 
 [node name="Grabber" parent="." instance=ExtResource("2_ojsp3")]
 
@@ -66,13 +67,13 @@ shape = SubResource("BoxShape3D_mw46o")
 transform = Transform3D(1, 0, 0, 0, 0.990615, 0.136684, 0, -0.136684, 0.990615, -7.9667, 0, 0)
 material_override = SubResource("ShaderMaterial_64oyw")
 emitting = false
-amount = 1000
+amount = 3000
 lifetime = 64.89
 speed_scale = 0.99
 explosiveness = 0.85
 randomness = 0.15
 local_coords = true
-mesh = SubResource("BoxMesh_3hv5c")
+mesh = SubResource("SphereMesh_k1jes")
 emission_shape = 3
 emission_box_extents = Vector3(1, 10, 1)
 direction = Vector3(-1, 0, 0)
@@ -113,3 +114,30 @@ visible = false
 light_color = Color(0.454902, 0.529412, 1, 1)
 light_volumetric_fog_energy = 6.4
 omni_range = 8.452
+
+[node name="ExplosionLights2" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.990615, 0.136684, 0, -0.136684, 0.990615, -7.9667, 0, 0)
+material_override = SubResource("ShaderMaterial_64oyw")
+emitting = false
+amount = 1000
+lifetime = 64.89
+speed_scale = 0.99
+explosiveness = 0.85
+randomness = 0.15
+local_coords = true
+mesh = SubResource("BoxMesh_rc5eo")
+emission_shape = 3
+emission_box_extents = Vector3(1, 10, 1)
+direction = Vector3(-1, 0, 0)
+spread = 33.3
+flatness = 0.37
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 17.09
+angular_velocity_min = -30.05
+angular_velocity_max = 23.08
+damping_max = 12.58
+color_ramp = ExtResource("4_l3dl1")
+color_initial_ramp = ExtResource("4_l3dl1")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+anim_speed_max = 12.03

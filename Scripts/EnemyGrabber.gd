@@ -28,8 +28,7 @@ var dying = false
 
 func _ready():
 	frames = [frame1, frame2]
-	await get_tree().create_timer(6.0, false).timeout
-	charge()
+
 
 
 func _physics_process(delta):
@@ -46,6 +45,7 @@ func _physics_process(delta):
 func Kill_Me():
 	if !dying:
 		fire_Particles.set_emitting(true)
+		cloud_Particles.set_emitting(true)
 		get_node("./Grabber3").show()
 		game_end = true
 		frames[0].hide()

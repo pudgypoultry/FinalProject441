@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://lx46vmkged8e"]
+[gd_scene load_steps=11 format=3 uid="uid://lx46vmkged8e"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyMoth.gd" id="1_h4r8f"]
 [ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Explosion.tres" id="1_s7crw"]
 [ext_resource type="PackedScene" uid="uid://b2mp23v2vx3fg" path="res://Models/GalagaEnemyMoth.glb" id="2_3idrb"]
 [ext_resource type="PackedScene" uid="uid://c5g0etn8kxoov" path="res://Models/GalagaEnemyMoth2.glb" id="3_sw28p"]
+[ext_resource type="AudioStream" uid="uid://bukbqp38d4oyj" path="res://Explosion.wav" id="5_plktm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75mth"]
 size = Vector3(20.3779, 11.4998, 23.6022)
@@ -85,3 +86,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
 
 [node name="GalagaEnemyMoth2" parent="." instance=ExtResource("3_sw28p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81, 0, 0)
+
+[node name="Kaboom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_plktm")

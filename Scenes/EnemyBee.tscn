@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://do6lqhnbcql40"]
+[gd_scene load_steps=11 format=3 uid="uid://do6lqhnbcql40"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyBee.gd" id="1_3fpj8"]
 [ext_resource type="PackedScene" uid="uid://cwdsmoj60j25i" path="res://Models/GalagaEnemyBee.glb" id="1_hrvam"]
 [ext_resource type="PackedScene" uid="uid://nxo2p50t0414" path="res://Models/GalagaEnemyBee2.glb" id="2_ama0m"]
+[ext_resource type="AudioStream" uid="uid://bukbqp38d4oyj" path="res://Explosion.wav" id="5_nxe6s"]
 [ext_resource type="Gradient" uid="uid://ca6nyk144dh7q" path="res://Explosion.tres" id="5_ym6bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fk7lf"]
@@ -84,3 +85,6 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 2.76
 initial_velocity_max = 4.65
 color_ramp = ExtResource("5_ym6bh")
+
+[node name="Kaboom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nxe6s")

@@ -24,8 +24,6 @@ const SHIP_MODE = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	original_position = position
-	await get_tree().create_timer(10, false).timeout
-	HOLDO_MANEUVER()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -105,6 +103,7 @@ func Set_Input_StarFox():
 func get_fire_input():
 	if get_node("/root/TestingScene/MothManager").get_children().size() != 0 || get_node("/root/TestingScene/BeeManager").get_children().size() != 0:
 		if can_shoot:
+			get_node("./Shoot").playing = true
 			if Input.is_action_just_pressed("fire_1"):
 				if mode == SHIP_MODE.GALAGA:
 					for i in range(-5, 6, 1):
@@ -138,7 +137,7 @@ func get_fire_input():
 					current_bullet_left.transform = get_node("./GalagaShip/GunOrganizer/ShootLeftFront").global_transform
 					current_bullet_left.set_global_rotation(missile_rotation)
 					can_shoot = false
-					await get_tree().create_timer(0.15, false).timeout
+					await get_tree().create_timer(0.25, false).timeout
 					can_shoot = true
 	else:
 		if Input.is_action_just_pressed("fire_1"):
@@ -154,6 +153,7 @@ func get_ship_mode():
 func HOLDO_MANEUVER():
 	print_debug("ZOOM")
 	make_a_da_tween(original_position)
+	get_node("./MakeItSo").playing = true
 	get_node("/root/TestingScene/BackgroundStars").do_it()
 	make_a_da_tween(position + Vector3(0,0, 50))
 	await get_tree().create_timer(4, false).timeout

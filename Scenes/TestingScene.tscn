@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx1f23o15nfof"]
+[gd_scene load_steps=12 format=3 uid="uid://bx1f23o15nfof"]
 
 [ext_resource type="PackedScene" uid="uid://cahk400q7nq8o" path="res://Scenes/GalagaShip.tscn" id="1_tw62k"]
 [ext_resource type="Script" path="res://Scripts/BackgroundStars.gd" id="3_3fxb4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://do6lqhnbcql40" path="res://Scenes/EnemyBee.tscn" id="5_tnxo1"]
 [ext_resource type="Script" path="res://Scripts/MothManager.gd" id="6_5g0fn"]
 [ext_resource type="PackedScene" uid="uid://d4lc16o4yo3wa" path="res://Scenes/enemy_grabber.tscn" id="6_7n3eg"]
+[ext_resource type="Script" path="res://Scripts/BeeManager.gd" id="6_578r4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eiun8"]
 
@@ -56,7 +57,7 @@ script = ExtResource("3_v3tji")
 transform = Transform3D(-1.03428e-07, 0, -2.36615, 0, 2.36615, 0, 2.36615, 0, -1.03428e-07, 0, 55.3844, -370.158)
 
 [node name="BeeManager" type="Node3D" parent="."]
-visible = false
+script = ExtResource("6_578r4")
 
 [node name="EnemyBee" parent="BeeManager" instance=ExtResource("5_tnxo1")]
 transform = Transform3D(-1.37628, 0, -1.20318e-07, 0, 1.37628, 0, 1.20318e-07, 0, -1.37628, 0, 2.0006, -277.446)
@@ -177,7 +178,6 @@ my_y = 3
 my_z = 1
 
 [node name="MothManager" type="Node3D" parent="."]
-visible = false
 script = ExtResource("6_5g0fn")
 
 [node name="EnemyMoth" parent="MothManager" instance=ExtResource("4_4jjiy")]

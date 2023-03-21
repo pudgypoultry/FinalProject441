@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cahk400q7nq8o"]
+[gd_scene load_steps=7 format=3 uid="uid://cahk400q7nq8o"]
 
 [ext_resource type="Script" path="res://Scripts/GalagaShip.gd" id="1_o22pg"]
 [ext_resource type="PackedScene" uid="uid://blb22nkogr816" path="res://Models/GalagaShip.glb" id="2_2cuq2"]
 [ext_resource type="PackedScene" uid="uid://44cpf83fokbj" path="res://Scenes/galaga_missile.tscn" id="2_f1imc"]
+[ext_resource type="AudioStream" uid="uid://cn8nncbiy2oag" path="res://ShootSound.mp3" id="4_sl4pg"]
+[ext_resource type="AudioStream" uid="uid://byrweod0qaxux" path="res://tng_warp5_clean.mp3" id="5_ise1f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iwbpa"]
 size = Vector3(30.391, 10.8022, 15.0992)
@@ -41,3 +43,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 9.288)
 [node name="ShipCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72523, 4.10018)
 shape = SubResource("BoxShape3D_iwbpa")
+disabled = true
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sl4pg")
+volume_db = -8.455
+
+[node name="MakeItSo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ise1f")
